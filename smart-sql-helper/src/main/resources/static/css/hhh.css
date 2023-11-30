@@ -1,0 +1,20 @@
+
+td {
+    border: solid black;
+    }
+
+
+.wide9 {
+    width: 9%;  /* 调整这个宽度以获得你想要的宽度 */
+    text-align: center;
+    }
+.wide11 {
+    width: 19%;  /* 调整这个宽度以获得你想要的宽度 */
+    text-align: center;
+    }
+
+.tdAutoWidth {
+    width: auto !important;
+    white-space: nowrap;  // 这将防止内容被截断，并使得如果一列中有多个单词时能够完整显示出来。
+}
+

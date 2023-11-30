@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sql helper</title>
+    <script type="text/javascript" src="./js/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="./js/sql-formatter-13.0.0.min.js"></script>
+    <script type="text/javascript" src="./js/hhh.js"></script>
+</head>
+<body>
+
+<form>
+    数据库类型: <select type="text" name="databaseType" id="databaseType">
+    <option value="MYSQL">MYSQL</option>
+    <option value="GP">GP</option>
+    <option value="GP_PIVOTAL">GP_PIVOTAL</option>
+    <option value="GP_POSTGRESQL">GP_POSTGRESQL</option>
+    <select><br>
+    ip: <input type="text" name="host" id="host" ><br>
+    端口: <input type="text" name="port" id="port"><br>
+    用户名: <input type="text" name="userName" id="userName" ><br>
+    密码: <input type="text" name="password" id="password" ><br>
+    数据库名: <input type="text" name="database" id="database"><br>
+    SQL语句:<textarea type="text" name="inputSql" id="inputSql" rows="7" cols="100"></textarea><br><br>
+        <button onclick="formatSQL(event)">格式化SQL</button><br>
+        <div id="formatSql" style="white-space: pre; border: 1px solid black;"></div>
+        <button id="executeSqlBtn" onclick="executeSql()" type="button">执行SQL</button><br><br>
+
+
+    <table name="sqlResult" id="sqlResult" class="tdAutoWidth" cellspacing="0"  border="1px solid black">
+
+    </table>
+</form>
+
+</body>
+</html>
