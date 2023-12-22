@@ -5,12 +5,14 @@ import how.smart.sql.helper.vo.JdbcExecuteResult;
 import how.smart.sql.helper.vo.JdbcExecuteResultColumnInfo;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,5 +105,29 @@ public class JdbcUtil {
         }
         jdbcExecuteResult.setData(resultList);
         return jdbcExecuteResult;
+    }
+
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306";
+        String username = "root";
+        String password = "root";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            DatabaseMetaData metaData = connection.getMetaData();
+            String databaseName = metaData.getDatabaseProductName();
+            System.out.println("Database: " + databaseName);
+            //检索元数据对象
+            //检索数据库名称列表
+            ResultSet tables = metaData.getCatalogs();
+            while (tables.next()) {
+                System.out.println(tables.getString("TABLE_CAT"));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("SQL Exception: " + e.getMessage());
+        }
+
+        List<String> calculateCaliberIdList = Arrays.asList("hh");
+        System.out.println(String.join(",", calculateCaliberIdList));
     }
 }
